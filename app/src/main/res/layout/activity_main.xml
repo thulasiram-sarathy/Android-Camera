@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:id="@+id/mainframe">
+
+    <com.camera.cameraview.CameraView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        app:cameraAudio="off"
+        app:cameraGestureTap="autoFocus"
+        app:cameraGesturePinch="zoom"
+        app:cameraWhiteBalance="auto"
+        app:cameraGestureScrollVertical="exposureCorrection"
+        app:cameraAutoFocusMarker="@string/cameraview_default_autofocus_marker">
+
+        <com.divyanshu.draw.widget.DrawView
+            android:id="@+id/draw_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_drawOnPreview="true"
+            app:layout_drawOnPictureSnapshot="true"
+            app:layout_drawOnVideoSnapshot="true"
+            />
+        <TextView
+            android:id="@+id/wishText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_white_24dp"
+            android:text=""
+            android:textAllCaps="true"
+            android:visibility="invisible"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            app:layout_drawOnPreview="true"
+            app:layout_drawOnPictureSnapshot="true"
+            app:layout_drawOnVideoSnapshot="true"/>
+
+        <ImageView
+    android:id="@+id/imgframe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_drawOnPreview="true"
+    app:layout_drawOnPictureSnapshot="true"
+    app:layout_drawOnVideoSnapshot="true"/>
+       <!-- android:src="@drawable/photoframe" -->
+    </com.camera.cameraview.CameraView>
+
+
+
+    <com.thul.androidcamera.PushTouchView
+        android:id="@+id/pushTouches"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_videocam_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            />
+
+
+        <include
+            android:id="@+id/colorpalette"
+            layout="@layout/color_palette"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/color_palette_negative_margin" />
+        <GridView
+            android:id="@+id/grid"
+            android:numColumns="3"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:columnWidth="200dp"
+            android:background="@color/cardview_light_background"
+            android:visibility="invisible"
+            android:stretchMode="columnWidth"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/color_palette_negative_margin" />
+        <Space
+            android:id="@+id/color_palette_negative_margin"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/fab_video"
+            app:layout_constraintTop_toTopOf="@id/fab_video"
+            app:layout_constraintEnd_toStartOf="@id/fab_video"
+            android:layout_marginEnd="16dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_camera_front_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/fab_video"
+            app:layout_constraintTop_toTopOf="@id/fab_video"
+            app:layout_constraintEnd_toStartOf="@id/fab_picture"
+            android:layout_marginEnd="16dp"
+            />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_mode_edit_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/fab_front"
+            app:layout_constraintTop_toTopOf="@id/fab_front"
+            app:layout_constraintEnd_toStartOf="@id/fab_front"
+            android:layout_marginEnd="16dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_filter_frames_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/fab_text"
+            app:layout_constraintTop_toTopOf="@id/fab_text"
+            app:layout_constraintEnd_toStartOf="@id/fab_text"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            android:textColor="@android:color/white"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
