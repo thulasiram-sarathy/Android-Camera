@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgframe;
     @BindView(R.id.fab_frame)
     FloatingActionButton fab_frame;
+    @BindView(R.id.fab_draw)
+    FloatingActionButton fab_draw;
 
     String[] web = {
             "Frame 1",
@@ -160,8 +162,17 @@ public class MainActivity extends AppCompatActivity {
         PermissionUtils.requestReadWriteAppPermissions(this);
     }
 
+    @OnClick(R.id.fab_draw)
+    void openPalete(){
+        View v = (View) findViewById(R.id.colorpalette);
+        v.setVisibility(View.VISIBLE);
+        pushTouchView.setForwardTo(drawView);
+    }
+
     @OnClick(R.id.fab_frame)
     void openFrame() {
+        View v = (View) findViewById(R.id.colorpalette);
+        v.setVisibility(View.INVISIBLE);
         grid.setVisibility(View.VISIBLE);
         CustomGrid adapter = new CustomGrid(MainActivity.this, web, imageId);
         grid.setAdapter(adapter);
@@ -205,7 +216,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.fab_text)
     void addTextOverlay() {
-
+        View v = (View) findViewById(R.id.colorpalette);
+        v.setVisibility(View.INVISIBLE);
         pushTouchView.setForwardTo(wishText);
 
         final AlertDialog dialogBuilder = new AlertDialog.Builder(this).create();

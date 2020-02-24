@@ -157,6 +157,17 @@
             app:layout_constraintEnd_toStartOf="@id/fab_text"
             android:layout_marginEnd="16dp" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_draw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:src="@drawable/ic_palette_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/fab_frame"
+            app:layout_constraintTop_toTopOf="@id/fab_frame"
+            app:layout_constraintEnd_toStartOf="@id/fab_frame"
+            android:layout_marginEnd="16dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
